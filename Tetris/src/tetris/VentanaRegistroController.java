@@ -55,7 +55,7 @@ public class VentanaRegistroController implements Initializable {
 // esto cierra la ventana 
     @FXML
     private void btatras(ActionEvent event) {
-           Stage stage = (Stage) this.botonAtras.getScene().getWindow();
+        Stage stage = (Stage) this.botonAtras.getScene().getWindow();
         stage.close();
     }
 
