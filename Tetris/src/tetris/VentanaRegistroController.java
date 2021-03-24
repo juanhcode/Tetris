@@ -6,8 +6,10 @@
 package tetris;
 
 import java.net.URL;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.util.ResourceBundle;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
@@ -15,6 +17,8 @@ import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
+import javax.swing.JOptionPane;
+import modelo.Conexion;
 
 /**
  * FXML Controller class
@@ -26,38 +30,64 @@ public class VentanaRegistroController implements Initializable {
     @FXML
     private Button botonRegistrar;
     @FXML
-    private TextField IngresarUsuario;
-    @FXML
-    private TextField agergarContraseña;
-    @FXML
-    private TextField repetirContraseña;
-    @FXML
     private ImageView imagenRegistro;
     @FXML
     private ImageView imagentetris;
     @FXML
     private Button botonAtras;
+    @FXML
+    private TextField campoUsuario;
+    @FXML
+    private TextField campoContraseña;
+    @FXML
+    private TextField campoVerificacionContraseña;
+
+    Connection conn = null;
+    ResultSet rs = null;
+    PreparedStatement pst = null;
 
     /**
      * Initializes the controller class.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        
+
         //imagenes de la interfaz
         Image ima = new Image("/recursos/imagenregistro.jpg");
         Image titulo = new Image("/recursos/Titulo.png");
         imagenRegistro.setImage(ima);
         imagentetris.setImage(titulo);
-        
-        
+
     }
 // esto cierra la ventana 
+
     @FXML
-    private void btatras(ActionEvent event) {
+    private void btatras() {
         Stage stage = (Stage) this.botonAtras.getScene().getWindow();
         stage.close();
     }
 
+    @FXML
+    private void registrar() {
+
+        String usuario = campoUsuario.getText();
+        String contrasenia = campoContraseña.getText();
+        String segundaContrasenia = campoVerificacionContraseña.getText();
+
+        if (contrasenia.equals(segundaContrasenia)) {
+            conn = Conexion.connectDb();
+            String sql = "insert into usuario (nombre,password)values(?,?)";
+            try {
+                pst = conn.prepareStatement(sql);
+                pst.setString(1, campoUsuario.getText());
+                pst.setString(2, campoContraseña.getText());
+                pst.execute();
+                JOptionPane.showMessageDialog(null, "Usuario añadido");
+            } catch (Exception e) {
+                JOptionPane.showMessageDialog(null, e);
+            }
+        }
+
+    }
 
 }
