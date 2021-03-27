@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package tetris;
+package vista;
 
 import java.net.URL;
 import java.sql.Connection;
@@ -41,6 +41,7 @@ public class VentanaRegistroController implements Initializable {
     private TextField campoContraseña;
     @FXML
     private TextField campoVerificacionContraseña;
+    private Administrador MenuRegistrar;
 
     Connection conn = null;
     ResultSet rs = null;
@@ -57,14 +58,13 @@ public class VentanaRegistroController implements Initializable {
         Image titulo = new Image("/recursos/Titulo.png");
         imagenRegistro.setImage(ima);
         imagentetris.setImage(titulo);
-
+        
     }
 // esto cierra la ventana 
 
     @FXML
     private void btatras() {
-        Stage stage = (Stage) this.botonAtras.getScene().getWindow();
-        stage.close();
+        MenuRegistrar.initRootLayout();
     }
 
     @FXML
@@ -88,6 +88,10 @@ public class VentanaRegistroController implements Initializable {
             }
         }
 
+    }
+    
+    public void setProgramaRegistro(Administrador ProgramaPrincipal) {
+        this.MenuRegistrar = ProgramaPrincipal;
     }
 
 }

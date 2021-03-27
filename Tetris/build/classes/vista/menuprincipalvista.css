@@ -1,0 +1,14 @@
+.play{-fx-background-radius: 18px}
+.modoDark{-fx-background-radius: 16px}
+.sonido{-fx-background-radius: 16px}
+
+/* style tablero*/
+.tablero{-fx-background-radius: 16px}
+
+/* style tablero de Estadisiticas*/
+.TableroEstadisiticas{-fx-background-radius: 15px} /*AnchorPane que almacena los 3 TextFileds*/
+.score{-fx-background-radius: 14px}
+.hold{-fx-background-radius: 14px}
+.insideHold{-fx-background-radius: 12px}
+.next{-fx-background-radius: 14px}
+.insideNext{-fx-background-radius: 12px}

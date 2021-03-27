@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package tetris;
+package vista;
 
 import java.io.IOException;
 import java.net.URL;
@@ -11,17 +11,11 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ResourceBundle;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
-import javafx.stage.Modality;
-import javafx.stage.Stage;
 import javax.swing.JOptionPane;
 import modelo.Conexion;
 
@@ -48,10 +42,11 @@ public class MenuPrincipalVistaController implements Initializable {
     private TextField campoContrasenia;
     @FXML
     private TextField campoUsuario;
+    private Administrador MenuPrincipal;
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        
+        play.setDisable(true);
     }
 
     @FXML
@@ -61,17 +56,10 @@ public class MenuPrincipalVistaController implements Initializable {
 
     //esto abre la ventana regisrar
     @FXML
-    private void btregistrar(ActionEvent event) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/tetris/VentanaRegistro.fxml"));
-        Parent root1 = (Parent) fxmlLoader.load();
-        Stage stage = new Stage();
-        stage.initModality(Modality.APPLICATION_MODAL);
-        stage.setTitle("Ayuda");
-        stage.setScene(new Scene(root1));
-        stage.show();
-
+    private void btregistrar() throws IOException {
+        MenuPrincipal.llamarSegundaVentana();
     }
-
+    
     @FXML
     private void jugar() {
         Connection conn = Conexion.connectDb();
@@ -81,14 +69,15 @@ public class MenuPrincipalVistaController implements Initializable {
         try {
             PreparedStatement ps = conn.prepareStatement("SELECT * FROM USUARIO WHERE nombre='"+ usuario+"' and  password='"+ contrasenia+"' ");
             ResultSet rs = ps.executeQuery();
-            
             if(rs.next()){
                 resultado = 1;
                 if(resultado==1){
-                    System.out.println("Hola");
                     JOptionPane.showMessageDialog(null, campoUsuario.getText() +"  Ya puedes jugar :)" );
-                    play.setDisable(true);
+                    play.setDisable(false);
                 }
+                campoUsuario.setText("");
+                campoContrasenia.setText("");
+                
             }
             else{
                 JOptionPane.showMessageDialog(null, "Error de Acceso , Ususario no registrado");
@@ -99,7 +88,12 @@ public class MenuPrincipalVistaController implements Initializable {
     }
 
     @FXML
-    private void empezarJuego() {
-        System.out.println("Perra");
+    private void empezarJuego(){
+        MenuPrincipal.llamarJuegoTetris();
+        
+    }
+    
+    public void setProgramaPrincipal(Administrador ProgramaPrincipal) {
+        this.MenuPrincipal = ProgramaPrincipal;
     }
 }

@@ -2,6 +2,7 @@
 
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
@@ -9,11 +10,10 @@
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="536.0" prefWidth="725.0" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tetris.MenuPrincipalVistaController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="536.0" prefWidth="725.0" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="vista.MenuPrincipalVistaController">
    <center>
       <AnchorPane fx:id="AnchorPaneFondo" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: ht;" BorderPane.alignment="CENTER">
          <children>
-            <TextField fx:id="campoContrasenia" layoutX="237.0" layoutY="236.0" prefHeight="25.0" prefWidth="201.0" />
             <Button fx:id="play" layoutX="293.0" layoutY="336.0" mnemonicParsing="false" onAction="#empezarJuego" prefHeight="112.0" prefWidth="117.0" style="-fx-background-color: #FA582A;" styleClass="play" stylesheets="@menuprincipalvista.css" />
             <Label layoutX="238.0" layoutY="138.0" text="Username">
                <font>
@@ -50,6 +50,7 @@
                   <Image url="@../recursos/bombilla.png" />
                </image>
             </ImageView>
+            <PasswordField fx:id="campoContrasenia" layoutX="237.0" layoutY="237.0" prefHeight="25.0" prefWidth="203.0" />
          </children>
       </AnchorPane>
    </center>
