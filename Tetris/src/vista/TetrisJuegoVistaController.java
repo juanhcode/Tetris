@@ -64,9 +64,9 @@ public class TetrisJuegoVistaController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        
+
     }
-    
+
     @FXML
     private void iniciar() {
         for (int[] a : MESH) {
@@ -580,8 +580,5 @@ public class TetrisJuegoVistaController implements Initializable {
         }
         return xb && yb && MESH[((int) rect.getX() / SIZE) + x][((int) rect.getY() / SIZE) - y] == 0;
     }
-
-
-    
 
 }
