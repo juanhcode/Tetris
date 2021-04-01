@@ -87,7 +87,7 @@ public class Administrador extends Application {
             primaryStage.setResizable(false);
 
             //creamos el controlador de la ventana
-            Tetris ventanaAbierta = loader.getController();
+            //Tetris ventanaAbierta = loader.getController();
             //ventanaAbierta.setProgramaTetris(this);
 
             primaryStage.show();
