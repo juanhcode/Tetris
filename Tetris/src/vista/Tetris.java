@@ -1,82 +1,70 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package vista;
 
-import java.net.URL;
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.ResourceBundle;
 import java.util.Timer;
 import java.util.TimerTask;
+import javafx.application.Application;
 import javafx.application.Platform;
 import javafx.event.EventHandler;
-import javafx.fxml.FXML;
-import javafx.fxml.Initializable;
 import javafx.scene.Node;
-import javafx.scene.control.Button;
+import javafx.scene.Scene;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
+import javafx.scene.shape.Line;
 import javafx.scene.shape.Rectangle;
 import javafx.scene.text.Text;
+import javafx.stage.Stage;
 
-/**
- * FXML Controller class
- *
- * @author Juan Manuel
- */
-public class TetrisJuegoVistaController implements Initializable {
+public class Tetris extends Application {
+    // The variables
 
-    @FXML
-    private Pane group;
     public static final int MOVE = 25;
     public static final int SIZE = 25;
     public static int XMAX = SIZE * 12;
     public static int YMAX = SIZE * 24;
     public static int[][] MESH = new int[XMAX / SIZE][YMAX / SIZE];
+    public static Pane group = new Pane();
     private static Form object;
+    private static Scene scene = new Scene(group, 900, 900);
     public static int score = 0;
     private static int top = 0;
     private static boolean game = true;
     private static Form nextObj = Controller.makeRect();
     private static int linesNo = 0;
-    private Object scene;
-    @FXML
-    private Button iniciar;
-    @FXML
-    private Text scoretext;
-    @FXML
-    private Text scoretext1;
-    @FXML
-    private Text puntaje;
-    @FXML
-    private Text nivel;
-    @FXML
-    private Text lineas;
-    @FXML
-    private Pane nextBloque;
 
-    /**
-     * Initializes the controller class.
-     */
-    @Override
-    public void initialize(URL url, ResourceBundle rb) {
-        
+    public static void main(String[] args) {
+        launch(args);
     }
-    
-    @FXML
-    private void iniciar() {
+
+    @Override
+    public void start(Stage stage) throws Exception {
         for (int[] a : MESH) {
             Arrays.fill(a, 0);
         }
+
+        Line line = new Line(XMAX, 0, XMAX, YMAX);
+        Text scoretext = new Text("Score: ");
+        scoretext.setStyle("-fx-font: 20 arial;");
+        scoretext.setY(50);
+        scoretext.setX(XMAX + 5);
+        Text level = new Text("Lines: ");
+        level.setStyle("-fx-font: 20 arial;");
+        level.setY(100);
+        level.setX(XMAX + 5);
+        level.setFill(Color.GREEN);
+        group.getChildren().addAll(scoretext, line, level);
+
         Form a = nextObj;
         group.getChildren().addAll(a.a, a.b, a.c, a.d);
         moveOnKeyPress(a);
         object = a;
         nextObj = Controller.makeRect();
+        stage.setScene(scene);
+        stage.setTitle("T E T R I S");
+        stage.show();
+
         Timer fall = new Timer();
         TimerTask task = new TimerTask() {
             public void run() {
@@ -106,8 +94,8 @@ public class TetrisJuegoVistaController implements Initializable {
 
                         if (game) {
                             MoveDown(object);
-                            puntaje.setText(Integer.toString(score));
-                            lineas.setText(Integer.toString(linesNo));
+                            scoretext.setText("Score: " + Integer.toString(score));
+                            level.setText("Lines: " + Integer.toString(linesNo));
                         }
                     }
                 });
@@ -117,21 +105,21 @@ public class TetrisJuegoVistaController implements Initializable {
     }
 
     private void moveOnKeyPress(Form form) {
-        Prueba.scene.setOnKeyPressed(new EventHandler<KeyEvent>() {
+        scene.setOnKeyPressed(new EventHandler<KeyEvent>() {
             @Override
             public void handle(KeyEvent event) {
                 switch (event.getCode()) {
-                    case D:
+                    case RIGHT:
                         Controller.MoveRight(form);
                         break;
-                    case S:
+                    case DOWN:
                         MoveDown(form);
                         score++;
                         break;
-                    case A:
+                    case LEFT:
                         Controller.MoveLeft(form);
                         break;
-                    case W:
+                    case UP:
                         MoveTurn(form);
                         break;
                 }
@@ -580,8 +568,5 @@ public class TetrisJuegoVistaController implements Initializable {
         }
         return xb && yb && MESH[((int) rect.getX() / SIZE) + x][((int) rect.getY() / SIZE) - y] == 0;
     }
-
-
-    
 
 }

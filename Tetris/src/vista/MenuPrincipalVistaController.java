@@ -34,7 +34,7 @@ public class MenuPrincipalVistaController implements Initializable {
     private Button play;
     @FXML
     private Button botonModoOscuro1;
-    
+
     Connection conn = null;
     ResultSet rs = null;
     PreparedStatement pst = null;
@@ -59,27 +59,26 @@ public class MenuPrincipalVistaController implements Initializable {
     private void btregistrar() throws IOException {
         MenuPrincipal.llamarSegundaVentana();
     }
-    
+
     @FXML
     private void jugar() {
         Connection conn = Conexion.connectDb();
         int resultado = 0;
         String usuario = campoUsuario.getText();
-        String contrasenia = campoContrasenia.getText(); 
+        String contrasenia = campoContrasenia.getText();
         try {
-            PreparedStatement ps = conn.prepareStatement("SELECT * FROM USUARIO WHERE nombre='"+ usuario+"' and  password='"+ contrasenia+"' ");
+            PreparedStatement ps = conn.prepareStatement("SELECT * FROM USUARIO WHERE nombre='" + usuario + "' and  password='" + contrasenia + "' ");
             ResultSet rs = ps.executeQuery();
-            if(rs.next()){
+            if (rs.next()) {
                 resultado = 1;
-                if(resultado==1){
-                    JOptionPane.showMessageDialog(null, campoUsuario.getText() +"  Ya puedes jugar :)" );
+                if (resultado == 1) {
+                    JOptionPane.showMessageDialog(null, campoUsuario.getText() + "  Ya puedes jugar :)");
                     play.setDisable(false);
                 }
                 campoUsuario.setText("");
                 campoContrasenia.setText("");
-                
-            }
-            else{
+
+            } else {
                 JOptionPane.showMessageDialog(null, "Error de Acceso , Ususario no registrado");
             }
         } catch (Exception e) {
@@ -88,11 +87,13 @@ public class MenuPrincipalVistaController implements Initializable {
     }
 
     @FXML
-    private void empezarJuego(){
+    private void empezarJuego() {
         MenuPrincipal.llamarJuegoTetris();
-        
+        //Tetris game = new Tetris();
+        //game.setLocationRelativeTo(null);
+        //game.setVisible(true);
     }
-    
+
     public void setProgramaPrincipal(Administrador ProgramaPrincipal) {
         this.MenuPrincipal = ProgramaPrincipal;
     }

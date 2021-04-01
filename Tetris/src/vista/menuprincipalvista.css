@@ -12,3 +12,4 @@
 .insideHold{-fx-background-radius: 12px}
 .next{-fx-background-radius: 14px}
 .insideNext{-fx-background-radius: 12px}
+.paused{-fx-background-image:url("/recursos/pausa.png")}

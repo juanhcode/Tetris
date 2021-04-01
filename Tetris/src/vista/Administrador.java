@@ -43,6 +43,7 @@ public class Administrador extends Application {
 
         } catch (IOException ex) {
             System.out.println("Error al cargar archivo externo");
+
         }
     }
     
@@ -86,8 +87,8 @@ public class Administrador extends Application {
             primaryStage.setResizable(false);
 
             //creamos el controlador de la ventana
-            TetrisJuegoVistaController ventanaAbierta = loader.getController();
-            ventanaAbierta.setProgramaTetris(this);
+            Tetris ventanaAbierta = loader.getController();
+            //ventanaAbierta.setProgramaTetris(this);
 
             primaryStage.show();
 
