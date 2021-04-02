@@ -1,21 +1,31 @@
 package vista;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.ResourceBundle;
 import java.util.Timer;
 import java.util.TimerTask;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javafx.application.Platform;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.scene.control.Label;
 import javafx.scene.input.KeyEvent;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
-import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
 import javafx.scene.text.Text;
+import javafx.stage.Modality;
+import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 
 /**
  * FXML Controller class
@@ -47,13 +57,14 @@ public class TetrisJuegoVistaController implements Initializable {
     private Pane paneles;
     @FXML
     private Text puntajeTexto;
+    @FXML
+    private Label vida;
 
     /**
      * Initializes the controller class.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-
     }
 
     @FXML
@@ -82,19 +93,23 @@ public class TetrisJuegoVistaController implements Initializable {
 
                         if (arriba == 2) {
                             // se termina el juego
-                            Text fin = new Text("Fin del juego");
-                            fin.setFill(Color.RED);
-                            fin.setStyle("-fx-font: 70 arial;");
-                            fin.setY(250);
-                            fin.setX(10);
-                            paneles.getChildren().add(fin);
-                            juego = false;
+                            int vidas = Integer.parseInt(vida.getText());
+                            vidas--;
+                            if (vidas == 2) {
+                                vida.setText(vidas + "");
+                                paneles.getChildren().clear();
+                                iniciar();
+                            } else if (vidas == 1) {
+                                vida.setText(vidas + "");
+                                paneles.getChildren().clear();
+                                iniciar();
+                            }
+                            if (vidas == 0) {
+                                System.out.println("Hola");
+                            }
+                            //juego = false;
                         }
                         // Exit
-                        if (arriba == 15) {
-                            System.exit(0);
-                        }
-
                         if (juego) {
                             Abajo(objeto);
                             puntajeTexto.setText(Integer.toString(puntaje));
@@ -105,7 +120,6 @@ public class TetrisJuegoVistaController implements Initializable {
             }
         };
         caida.schedule(task, 0, 300);
-
     }
 
     private void moveOnKeyPress(Forma forma) {
@@ -573,6 +587,17 @@ public class TetrisJuegoVistaController implements Initializable {
                 rectas.clear();
             } while (lineas.size() > 0);
         }
+    }
+
+    @FXML
+    private void pausar() throws IOException {
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/vista/pausaVista.fxml"));
+        Parent root1 = (Parent) fxmlLoader.load();
+        Stage stage = new Stage();
+        stage.initModality(Modality.APPLICATION_MODAL);
+        stage.setResizable(false);
+        stage.setScene(new Scene(root1));
+        stage.show();
     }
 
 }
