@@ -5,22 +5,18 @@
  */
 package vista;
 
-import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Button;
 
 /**
  * FXML Controller class
  *
  * @author Juan Manuel
  */
-public class PausaVistaController implements Initializable {
-
-    @FXML
-    private Button reanudar;
+public class GameOverVistaController implements Initializable {
 
     /**
      * Initializes the controller class.
@@ -31,19 +27,12 @@ public class PausaVistaController implements Initializable {
     }    
 
     @FXML
-    private void reanudar() {
+    private void home() {
+        System.out.println("Hola");
     }
 
     @FXML
-    private void opciones() {
-    }
-
-    @FXML
-    private void comoJugar() {
-    }
-
-    @FXML
-    private void quitar() throws IOException {
+    private void cargarDeNuevo() {
     }
     
 }

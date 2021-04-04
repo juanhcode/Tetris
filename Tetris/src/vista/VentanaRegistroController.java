@@ -16,7 +16,6 @@ import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.stage.Stage;
 import javax.swing.JOptionPane;
 import modelo.Conexion;
 
@@ -58,7 +57,7 @@ public class VentanaRegistroController implements Initializable {
         Image titulo = new Image("/recursos/Titulo.png");
         imagenRegistro.setImage(ima);
         imagentetris.setImage(titulo);
-        
+
     }
 // esto cierra la ventana 
 
@@ -74,7 +73,9 @@ public class VentanaRegistroController implements Initializable {
         String contrasenia = campoContraseña.getText();
         String segundaContrasenia = campoVerificacionContraseña.getText();
 
-        if (contrasenia.equals(segundaContrasenia)) {
+        if (campoUsuario.getText().equals("") && campoContraseña.getText().equals("") && campoVerificacionContraseña.getText().equals("")) {
+            JOptionPane.showMessageDialog(null, "Ingresar datos validos");
+        } else if (contrasenia.equals(segundaContrasenia)) {
             conn = Conexion.connectDb();
             String sql = "insert into usuario (nombre,password)values(?,?)";
             try {
@@ -83,13 +84,17 @@ public class VentanaRegistroController implements Initializable {
                 pst.setString(2, campoContraseña.getText());
                 pst.execute();
                 JOptionPane.showMessageDialog(null, "Usuario añadido");
+                campoUsuario.setText("");
+                campoContraseña.setText("");
+                campoVerificacionContraseña.setText("");
+
             } catch (Exception e) {
                 JOptionPane.showMessageDialog(null, e);
             }
         }
 
     }
-    
+
     public void setProgramaRegistro(Administrador ProgramaPrincipal) {
         this.MenuRegistrar = ProgramaPrincipal;
     }

@@ -9,7 +9,6 @@ package vista;
  *
  * @author Juan Manuel
  */
-
 import java.io.IOException;
 import javafx.application.Application;
 import static javafx.application.Application.launch;
@@ -39,7 +38,7 @@ public class Prueba extends Application {
             FXMLLoader loader = new FXMLLoader();
             loader.setLocation(Administrador.class.getResource("/vista/TetrisJuegoVista.fxml"));
             rootLaoyut = (BorderPane) loader.load();
-            
+
             //Crear la escena
             scene = new Scene(rootLaoyut);
             primaryStage.setScene(scene);
@@ -56,6 +55,22 @@ public class Prueba extends Application {
 
     public static void main(String[] args) {
         launch(args);
+    }
+
+    public Stage getPrimaryStage() {
+        return primaryStage;
+    }
+
+    public void setPrimaryStage(Stage primaryStage) {
+        this.primaryStage = primaryStage;
+    }
+
+    public static Scene getScene() {
+        return scene;
+    }
+
+    public static void setScene(Scene scene) {
+        Prueba.scene = scene;
     }
 
 }

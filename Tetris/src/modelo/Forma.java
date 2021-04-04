@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package vista;
+package modelo;
 
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
@@ -14,11 +14,11 @@ import javafx.scene.shape.Rectangle;
  */
 public class Forma {
 
-    Rectangle a;
-    Rectangle b;
-    Rectangle c;
-    Rectangle d;
-    Color color;
+    public Rectangle a;
+    public Rectangle b;
+    public Rectangle c;
+    public Rectangle d;
+    public Color color;
     private String nombre;
     public int forma = 1;
 

@@ -1,6 +1,8 @@
 package vista;
 
 import java.io.IOException;
+import modelo.Controlador;
+import modelo.Forma;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -18,14 +20,13 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
+import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyEvent;
-import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
 import javafx.scene.shape.Rectangle;
 import javafx.scene.text.Text;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
-import javafx.stage.StageStyle;
 
 /**
  * FXML Controller class
@@ -59,12 +60,23 @@ public class TetrisJuegoVistaController implements Initializable {
     private Text puntajeTexto;
     @FXML
     private Label vida;
+    @FXML
+    private ImageView corazon1;
+    @FXML
+    private ImageView corazon2;
+    @FXML
+    private ImageView corazon3;
+    @FXML
+    private Label vida1;
+    @FXML
+    private Label tiempo;
 
     /**
      * Initializes the controller class.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+
     }
 
     @FXML
@@ -92,22 +104,35 @@ public class TetrisJuegoVistaController implements Initializable {
                         }
 
                         if (arriba == 2) {
-                            // se termina el juego
                             int vidas = Integer.parseInt(vida.getText());
                             vidas--;
                             if (vidas == 2) {
+                                corazon3.setVisible(false);
                                 vida.setText(vidas + "");
-                                paneles.getChildren().clear();
-                                iniciar();
+                                paneles.getChildren().clear(); //limpia tablero e inicia
+                                iniciar(); // cambiar
                             } else if (vidas == 1) {
+                                corazon2.setVisible(false);
                                 vida.setText(vidas + "");
-                                paneles.getChildren().clear();
-                                iniciar();
+                                paneles.getChildren().clear(); //limpia tablero e inicia
+                                iniciar(); // cambiar
+                            } else if (vidas == 0) {
+                                corazon1.setVisible(false);
+                                paneles.getChildren().clear(); //limpia tablero e inicia
+                                juego = false;
+                                try {
+                                    FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/vista/GameOverVista.fxml"));
+                                    Parent root1;
+                                    root1 = (Parent) fxmlLoader.load();
+                                    Stage stage = new Stage();
+                                    stage.initModality(Modality.APPLICATION_MODAL);
+                                    stage.setTitle("Ayuda");
+                                    stage.setScene(new Scene(root1));
+                                    stage.show();
+                                } catch (IOException ex) {
+                                    Logger.getLogger(TetrisJuegoVistaController.class.getName()).log(Level.SEVERE, null, ex);
+                                }
                             }
-                            if (vidas == 0) {
-                                System.out.println("Hola");
-                            }
-                            //juego = false;
                         }
                         // Exit
                         if (juego) {
@@ -123,7 +148,8 @@ public class TetrisJuegoVistaController implements Initializable {
     }
 
     private void moveOnKeyPress(Forma forma) {
-        Prueba.scene.setOnKeyPressed(new EventHandler<KeyEvent>() {
+        //Prueba.scene.setOnKeyPressed(new EventHandler<KeyEvent>() {
+            Administrador.sceneT.setOnKeyPressed(new EventHandler<KeyEvent>() {
             @Override
             public void handle(KeyEvent event) {
                 switch (event.getCode()) {
@@ -590,14 +616,15 @@ public class TetrisJuegoVistaController implements Initializable {
     }
 
     @FXML
-    private void pausar() throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/vista/pausaVista.fxml"));
+    private void pausar() throws IOException, InterruptedException {
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/vista/PausaVista.fxml"));
         Parent root1 = (Parent) fxmlLoader.load();
         Stage stage = new Stage();
         stage.initModality(Modality.APPLICATION_MODAL);
-        stage.setResizable(false);
+        //stage.initStyle(StageStyle.TRANSPARENT);
         stage.setScene(new Scene(root1));
+        stage.setResizable(false);
         stage.show();
-    }
 
+    }
 }

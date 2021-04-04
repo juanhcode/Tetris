@@ -11,6 +11,7 @@ public class Administrador extends Application {
 
     private Stage primaryStage;
     private BorderPane rootLaoyut; //Es el borderPane
+    public  static Scene sceneT;
 
     @Override
     public void start(Stage stage) throws Exception {
@@ -18,7 +19,7 @@ public class Administrador extends Application {
         primaryStage.setTitle("Tetris"); //Titulo
         initRootLayout();
     }
-    
+
     public void initRootLayout() {
 
         try {
@@ -27,7 +28,7 @@ public class Administrador extends Application {
             FXMLLoader loader = new FXMLLoader();
             loader.setLocation(Administrador.class.getResource("/vista/MenuPrincipalVista.fxml"));
             rootLaoyut = (BorderPane) loader.load();
-            
+
             //Crear la escena
             Scene scene = new Scene(rootLaoyut);
             primaryStage.setScene(scene);
@@ -35,10 +36,9 @@ public class Administrador extends Application {
 
             //creamos el controlador de la ventana
             //enviamos el administrador Principal a la ventana abierta
-            
             MenuPrincipalVistaController ventanaAbierta = loader.getController();
             ventanaAbierta.setProgramaPrincipal(this);
-            
+
             primaryStage.show();
 
         } catch (IOException ex) {
@@ -46,7 +46,7 @@ public class Administrador extends Application {
 
         }
     }
-    
+
     public void llamarSegundaVentana() {
 
         try {
@@ -71,7 +71,7 @@ public class Administrador extends Application {
             System.out.println("Error al cargar archivo externo");
         }
     }
-    
+
     public void llamarJuegoTetris() {
 
         try {
@@ -82,19 +82,26 @@ public class Administrador extends Application {
             rootLaoyut = (BorderPane) loader.load();
 
             //Crear la escena
-            Scene scene = new Scene(rootLaoyut);
-            primaryStage.setScene(scene);
+            sceneT = new Scene(rootLaoyut);
+            primaryStage.setScene(sceneT);
             primaryStage.setResizable(false);
 
             //creamos el controlador de la ventana
             //Tetris ventanaAbierta = loader.getController();
             //ventanaAbierta.setProgramaTetris(this);
-
             primaryStage.show();
 
         } catch (IOException ex) {
             System.out.println("Error al cargar archivo externo");
         }
+    }
+
+    public Scene getSceneT() {
+        return sceneT;
+    }
+
+    public void setSceneT(Scene sceneT) {
+        this.sceneT = sceneT;
     }
     
     
@@ -102,5 +109,5 @@ public class Administrador extends Application {
     public static void main(String[] args) {
         launch(args);
     }
-    
+
 }

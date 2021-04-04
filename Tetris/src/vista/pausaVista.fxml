@@ -6,7 +6,7 @@
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="446.0" prefWidth="327.0" style="-fx-background-color: #141514;" stylesheets="@menuprincipalvista.css" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="vista.PausaVistaController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="446.0" prefWidth="327.0" style="-fx-background-color: #141514;" stylesheets="@../css/menuprincipalvista.css" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="vista.PausaVistaController">
    <center>
       <AnchorPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
          <children>
@@ -15,10 +15,10 @@
                   <Font name="System Bold" size="38.0" />
                </font>
             </Label>
-            <Button fx:id="reanudar" layoutX="42.0" layoutY="103.0" mnemonicParsing="false" onAction="#reanudar" prefHeight="52.0" prefWidth="245.0" style="-fx-background-color: #fbce43;" styleClass="score" stylesheets="@menuprincipalvista.css" />
-            <Button layoutX="42.0" layoutY="180.0" mnemonicParsing="false" onAction="#opciones" prefHeight="52.0" prefWidth="245.0" style="-fx-background-color: #464e5d;" styleClass="score" stylesheets="@menuprincipalvista.css" />
-            <Button layoutX="41.0" layoutY="264.0" mnemonicParsing="false" onAction="#comoJugar" prefHeight="52.0" prefWidth="245.0" style="-fx-background-color: #464e5d;" styleClass="score" stylesheets="@menuprincipalvista.css" />
-            <Button layoutX="41.0" layoutY="344.0" mnemonicParsing="false" onAction="#quitar" prefHeight="52.0" prefWidth="245.0" style="-fx-background-color: #464e5d;" styleClass="score" stylesheets="@menuprincipalvista.css" />
+            <Button fx:id="reanudar" layoutX="42.0" layoutY="103.0" mnemonicParsing="false" onAction="#reanudar" prefHeight="52.0" prefWidth="245.0" style="-fx-background-color: #fbce43;" styleClass="score" stylesheets="@../css/menuprincipalvista.css" />
+            <Button layoutX="42.0" layoutY="180.0" mnemonicParsing="false" onAction="#opciones" prefHeight="52.0" prefWidth="245.0" style="-fx-background-color: #464e5d;" styleClass="score" stylesheets="@../css/menuprincipalvista.css" />
+            <Button layoutX="41.0" layoutY="264.0" mnemonicParsing="false" onAction="#comoJugar" prefHeight="52.0" prefWidth="245.0" style="-fx-background-color: #464e5d;" styleClass="score" stylesheets="@../css/menuprincipalvista.css" />
+            <Button layoutX="41.0" layoutY="344.0" mnemonicParsing="false" onAction="#quitar" prefHeight="52.0" prefWidth="245.0" style="-fx-background-color: #464e5d;" styleClass="score" stylesheets="@../css/menuprincipalvista.css" />
             <Label layoutX="95.0" layoutY="111.0" text="REANUDAR" textFill="WHITE">
                <font>
                   <Font name="System Bold" size="25.0" />

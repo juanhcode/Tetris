@@ -13,3 +13,5 @@
 .next{-fx-background-radius: 14px}
 .insideNext{-fx-background-radius: 12px}
 .paused{-fx-background-image:url("/recursos/pausa.png")}
+.home{-fx-background-image:url("/recursos/home.png")}
+.reload{-fx-background-image:url("/recursos/reload.png")}
