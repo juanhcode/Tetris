@@ -1,4 +1,5 @@
 package vista;
+
 import java.io.IOException;
 import javafx.application.Application;
 import static javafx.application.Application.launch;
@@ -11,9 +12,9 @@ public class Administrador extends Application {
 
     private Stage primaryStage;
     private Stage primaryStagePausa;
-    public  static Scene scenePausa;
+    public static Scene scenePausa;
     private BorderPane rootLaoyut; //Es el borderPane
-    public  static Scene sceneT;
+    public static Scene sceneT;
 
     @Override
     public void start(Stage stage) throws Exception {
@@ -99,7 +100,7 @@ public class Administrador extends Application {
             System.out.println("Error al cargar archivo externo");
         }
     }
-    
+
     public void abrirVentanaPausa() {
 
         try {
@@ -122,7 +123,25 @@ public class Administrador extends Application {
             System.out.println("Error al cargar archivo externo");
         }
     }
-    
+
+    public void abrirVentanaGameOver() {
+        try {
+            //Para cargar el archivo fxml
+            FXMLLoader loader = new FXMLLoader();
+            loader.setLocation(Administrador.class.getResource("/vista/GameOverVista.fxml"));
+            rootLaoyut = (BorderPane) loader.load();
+            //Crear la escena
+            Scene scene = new Scene(rootLaoyut);
+            primaryStage.setScene(scene);
+            primaryStage.setResizable(false);
+            GameOverVistaController controlador = loader.getController();
+            controlador.setAdmin(this);
+            primaryStage.show();
+
+        } catch (IOException ex) {
+            System.out.println("Error al cargar archivo externo");
+        }
+    }
 
     public Scene getSceneT() {
         return sceneT;
@@ -139,7 +158,5 @@ public class Administrador extends Application {
     public Stage getPrimaryStagePausa() {
         return primaryStagePausa;
     }
-    
-    
 
 }

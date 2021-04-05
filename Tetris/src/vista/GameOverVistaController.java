@@ -7,7 +7,6 @@ package vista;
 
 import java.net.URL;
 import java.util.ResourceBundle;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 
@@ -21,6 +20,8 @@ public class GameOverVistaController implements Initializable {
     /**
      * Initializes the controller class.
      */
+    
+    private Administrador admin;
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
@@ -28,11 +29,23 @@ public class GameOverVistaController implements Initializable {
 
     @FXML
     private void home() {
-        System.out.println("Hola");
+        admin.initRootLayout();
     }
 
     @FXML
     private void cargarDeNuevo() {
+        admin.llamarJuegoTetris();
     }
+
+    public Administrador getAdmin() {
+        return admin;
+    }
+
+    public void setAdmin(Administrador admin) {
+        this.admin = admin;
+    }
+    
+    
+    
     
 }

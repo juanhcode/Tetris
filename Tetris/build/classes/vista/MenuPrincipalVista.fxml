@@ -12,9 +12,9 @@
 
 <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="536.0" prefWidth="725.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="vista.MenuPrincipalVistaController">
    <center>
-      <AnchorPane fx:id="AnchorPaneFondo" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: ht;" stylesheets="@../css/menuprincipalvista.css" BorderPane.alignment="CENTER">
+      <AnchorPane fx:id="AnchorPaneFondo" prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
          <children>
-            <Button fx:id="play" layoutX="293.0" layoutY="336.0" mnemonicParsing="false" onAction="#empezarJuego" prefHeight="112.0" prefWidth="117.0" style="-fx-background-color: #FA582A;" styleClass="play" stylesheets="@menuprincipalvista.css" />
+            <Button fx:id="play" layoutX="293.0" layoutY="336.0" mnemonicParsing="false" onAction="#empezarJuego" prefHeight="112.0" prefWidth="117.0" style="-fx-background-color: #FA582A;" styleClass="play" stylesheets="@../css/menuprincipalvista.css" />
             <Label layoutX="238.0" layoutY="138.0" text="Username">
                <font>
                   <Font name="Arial Bold" size="17.0" />
@@ -26,7 +26,7 @@
                   <Font name="Arial Bold" size="17.0" />
                </font>
             </Label>
-            <Button fx:id="botonModoOscuro" layoutX="356.0" layoutY="454.0" mnemonicParsing="false" onAction="#modoOscuro" prefHeight="52.0" prefWidth="55.0" style="-fx-background-color: #F5BF2D;" styleClass="modoDark" stylesheets="@menuprincipalvista.css" />
+            <Button fx:id="botonModoOscuro" layoutX="356.0" layoutY="454.0" mnemonicParsing="false" onAction="#modoOscuro" prefHeight="52.0" prefWidth="55.0" style="-fx-background-color: #F5BF2D;" styleClass="modoDark" stylesheets="@../css/menuprincipalvista.css" />
             <ImageView fitHeight="46.0" fitWidth="37.0" layoutX="337.0" layoutY="372.0">
                <image>
                   <Image url="@../recursos/play.png" />

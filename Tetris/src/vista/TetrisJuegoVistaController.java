@@ -156,7 +156,8 @@ public class TetrisJuegoVistaController implements Initializable {
                                 paneles.getChildren().clear(); //limpia tablero e inicia
                                 juego = false;
                                 //inicio = 0;
-
+                                admin.abrirVentanaGameOver();
+                                /*
                                 try {
                                     FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/vista/GameOverVista.fxml"));
                                     Parent root1;
@@ -168,6 +169,7 @@ public class TetrisJuegoVistaController implements Initializable {
                                 } catch (IOException ex) {
                                     Logger.getLogger(TetrisJuegoVistaController.class.getName()).log(Level.SEVERE, null, ex);
                                 }
+                                */
                             }
                         }
                         // Exit
