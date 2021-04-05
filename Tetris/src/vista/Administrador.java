@@ -10,12 +10,15 @@ import javafx.stage.Stage;
 public class Administrador extends Application {
 
     private Stage primaryStage;
+    private Stage primaryStagePausa;
+    public  static Scene scenePausa;
     private BorderPane rootLaoyut; //Es el borderPane
     public  static Scene sceneT;
 
     @Override
     public void start(Stage stage) throws Exception {
         primaryStage = stage;
+        primaryStagePausa = new Stage();
         primaryStage.setTitle("Tetris"); //Titulo
         initRootLayout();
     }
@@ -38,7 +41,6 @@ public class Administrador extends Application {
             //enviamos el administrador Principal a la ventana abierta
             MenuPrincipalVistaController ventanaAbierta = loader.getController();
             ventanaAbierta.setProgramaPrincipal(this);
-
             primaryStage.show();
 
         } catch (IOException ex) {
@@ -89,12 +91,38 @@ public class Administrador extends Application {
             //creamos el controlador de la ventana
             //Tetris ventanaAbierta = loader.getController();
             //ventanaAbierta.setProgramaTetris(this);
+            TetrisJuegoVistaController controlador = loader.getController();
+            controlador.setAdmin(this);
             primaryStage.show();
 
         } catch (IOException ex) {
             System.out.println("Error al cargar archivo externo");
         }
     }
+    
+    public void abrirVentanaPausa() {
+
+        try {
+
+            //Para cargar el archivo fxml
+            FXMLLoader loader = new FXMLLoader();
+            loader.setLocation(Administrador.class.getResource("/vista/PausaVista.fxml"));
+            rootLaoyut = (BorderPane) loader.load();
+
+            //Crear la escena
+            scenePausa = new Scene(rootLaoyut);
+            primaryStagePausa.setScene(scenePausa);
+            primaryStagePausa.setResizable(false);
+
+            PausaVistaController controlador = loader.getController();
+            controlador.setAdmin(this);
+            primaryStagePausa.show();
+
+        } catch (IOException ex) {
+            System.out.println("Error al cargar archivo externo");
+        }
+    }
+    
 
     public Scene getSceneT() {
         return sceneT;
@@ -103,11 +131,15 @@ public class Administrador extends Application {
     public void setSceneT(Scene sceneT) {
         this.sceneT = sceneT;
     }
-    
-    
 
     public static void main(String[] args) {
         launch(args);
     }
+
+    public Stage getPrimaryStagePausa() {
+        return primaryStagePausa;
+    }
+    
+    
 
 }

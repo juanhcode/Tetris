@@ -10,9 +10,9 @@
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="536.0" prefWidth="725.0" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="vista.MenuPrincipalVistaController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="536.0" prefWidth="725.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="vista.MenuPrincipalVistaController">
    <center>
-      <AnchorPane fx:id="AnchorPaneFondo" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: ht;" BorderPane.alignment="CENTER">
+      <AnchorPane fx:id="AnchorPaneFondo" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: ht;" stylesheets="@../css/menuprincipalvista.css" BorderPane.alignment="CENTER">
          <children>
             <Button fx:id="play" layoutX="293.0" layoutY="336.0" mnemonicParsing="false" onAction="#empezarJuego" prefHeight="112.0" prefWidth="117.0" style="-fx-background-color: #FA582A;" styleClass="play" stylesheets="@menuprincipalvista.css" />
             <Label layoutX="238.0" layoutY="138.0" text="Username">
@@ -34,7 +34,7 @@
             </ImageView>
             <Button layoutX="352.0" layoutY="280.0" mnemonicParsing="false" onAction="#btregistrar" prefHeight="25.0" prefWidth="89.0" text="Registrar" />
             <Button layoutX="235.0" layoutY="280.0" mnemonicParsing="false" onAction="#jugar" prefHeight="25.0" prefWidth="89.0" text="Conectar" />
-            <Button fx:id="botonModoOscuro1" layoutX="293.0" layoutY="454.0" mnemonicParsing="false" onAction="#modoOscuro" prefHeight="52.0" prefWidth="55.0" style="-fx-background-color: #3AEB40;" styleClass="sonido" stylesheets="@menuprincipalvista.css" />
+            <Button fx:id="botonModoOscuro1" layoutX="293.0" layoutY="454.0" mnemonicParsing="false" onAction="#modoOscuro" prefHeight="52.0" prefWidth="55.0" style="-fx-background-color: #3AEB40;" styleClass="sonido" stylesheets="@../css/menuprincipalvista.css" />
             <ImageView fitHeight="35.0" fitWidth="33.0" layoutX="304.0" layoutY="463.0">
                <image>
                   <Image url="@../recursos/sonido.png" />

@@ -21,6 +21,8 @@ public class PausaVistaController implements Initializable {
 
     @FXML
     private Button reanudar;
+    private Prueba prueba;
+    private Administrador admin;
 
     /**
      * Initializes the controller class.
@@ -44,6 +46,22 @@ public class PausaVistaController implements Initializable {
 
     @FXML
     private void quitar() throws IOException {
+        //prueba.getPrimaryStage().close();
+        admin.getPrimaryStagePausa().close();
+        admin.initRootLayout();
+        
+    }
+
+    public void setPrueba(Prueba prueba) {
+        this.prueba = prueba;
+    }
+
+    public void setReanudar(Button reanudar) {
+        this.reanudar = reanudar;
+    }
+
+    public void setAdmin(Administrador admin) {
+        this.admin = admin;
     }
     
 }

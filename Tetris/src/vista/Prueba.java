@@ -46,7 +46,10 @@ public class Prueba extends Application {
 
             //creamos el controlador de la ventana
             //enviamos el administrador Principal a la ventana abierta
+            TetrisJuegoVistaController controlador = loader.getController();
+            controlador.setPrueba(this);
             primaryStage.show();
+            
 
         } catch (IOException ex) {
             System.out.println("Error al cargar archivo externo");
