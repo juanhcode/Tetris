@@ -1,32 +1,29 @@
 package vista;
 
-import java.io.IOException;
 import modelo.Controlador;
 import modelo.Forma;
 import java.net.URL;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.ResourceBundle;
 import java.util.Timer;
 import java.util.TimerTask;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javafx.application.Platform;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.Pane;
 import javafx.scene.shape.Rectangle;
 import javafx.scene.text.Text;
-import javafx.stage.Modality;
-import javafx.stage.Stage;
+import javax.swing.JOptionPane;
+import modelo.Conexion;
 
 /**
  * FXML Controller class
@@ -74,6 +71,10 @@ public class TetrisJuegoVistaController implements Initializable {
     private Label tiempo;
     private long inicio = 0;
     private boolean estado = false;
+    private int nivelActual;
+    Connection conn = null;
+    ResultSet rs = null;
+    PreparedStatement pst = null;
 
     /**
      * Initializes the controller class.
@@ -83,7 +84,7 @@ public class TetrisJuegoVistaController implements Initializable {
     }
 
     @FXML
-    private void iniciar() {
+    public void iniciar() {
         for (int[] a : TABLERO) {
             Arrays.fill(a, 0);
         }
@@ -105,7 +106,6 @@ public class TetrisJuegoVistaController implements Initializable {
                             inicio = (int) (aa / 1000) % 60;
                             estado = true;
                             inicio -= inicio;
-                            //inicio = 55;
                         } else {
                             inicio++;
                         }
@@ -143,33 +143,26 @@ public class TetrisJuegoVistaController implements Initializable {
                                 corazon3.setVisible(false);
                                 vida.setText(vidas + "");
                                 paneles.getChildren().clear(); //limpia tablero e inicia
-                                iniciar(); // cambiar
-                                //funcion(caida, this);
+                                iniciar();
                             } else if (vidas == 1) {
                                 corazon2.setVisible(false);
                                 vida.setText(vidas + "");
                                 paneles.getChildren().clear(); //limpia tablero e inicia
-                                //funcion(caida, this);
-                                iniciar(); // cambiar
+                                iniciar();
                             } else if (vidas == 0) {
                                 corazon1.setVisible(false);
                                 paneles.getChildren().clear(); //limpia tablero e inicia
                                 juego = false;
-                                //inicio = 0;
-                                admin.abrirVentanaGameOver();
-                                /*
+                                //MANDAR PUNTAJE A LA BASE DE DATOS
+                                conn = Conexion.connectDb();
+                                String sql = "update usuario set puntaje= '" + puntaje  + "' where nombre='" + MenuPrincipalVistaController.usuario + "' ";
                                 try {
-                                    FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/vista/GameOverVista.fxml"));
-                                    Parent root1;
-                                    root1 = (Parent) fxmlLoader.load();
-                                    Stage stage = new Stage();
-                                    stage.initModality(Modality.APPLICATION_MODAL);
-                                    stage.setScene(new Scene(root1));
-                                    stage.show();
-                                } catch (IOException ex) {
-                                    Logger.getLogger(TetrisJuegoVistaController.class.getName()).log(Level.SEVERE, null, ex);
+                                    pst = conn.prepareStatement(sql);
+                                    pst.execute();
+                                } catch (Exception e) {
+                                    JOptionPane.showMessageDialog(null, e);
                                 }
-                                */
+                                admin.abrirVentanaGameOver();
                             }
                         }
                         // Exit
@@ -184,8 +177,24 @@ public class TetrisJuegoVistaController implements Initializable {
             }
 
         };
-        //funcion(caida, task);
-        caida.schedule(task, 0, 1000);
+        nivelActual = Integer.parseInt(nivel.getText());
+        System.out.println("NivelActual" + nivelActual);
+        int lineasActuales = Integer.parseInt(lineas.getText());
+        System.out.println("Lineas Actuales" + lineasActuales);
+        if (NivelVistaController.valor == 1) {
+            caida.schedule(task, 0, 700);
+        } else if (NivelVistaController.valor == 5) {
+            caida.schedule(task, 0, 1000);
+            nivel.setText(NivelVistaController.valor + "");
+            System.out.println(lineas.getText());
+            if (lineasActuales >= 1) {
+                nivel.setText(nivelActual++ + "");
+                caida.schedule(task, 0, 100);
+            }
+        } else if (NivelVistaController.valor == 10) {
+            nivel.setText(NivelVistaController.valor + "");
+            caida.schedule(task, 0, 100);
+        }
     }
 
     public void funcion(Timer time, TimerTask task) {

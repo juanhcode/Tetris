@@ -36,7 +36,7 @@ public class Prueba extends Application {
 
             //Para cargar el archivo fxml
             FXMLLoader loader = new FXMLLoader();
-            loader.setLocation(Administrador.class.getResource("/vista/TetrisJuegoVista.fxml"));
+            loader.setLocation(Administrador.class.getResource("/vista/NivelVista.fxml"));
             rootLaoyut = (BorderPane) loader.load();
 
             //Crear la escena
@@ -46,10 +46,9 @@ public class Prueba extends Application {
 
             //creamos el controlador de la ventana
             //enviamos el administrador Principal a la ventana abierta
-            TetrisJuegoVistaController controlador = loader.getController();
+            NivelVistaController controlador = loader.getController();
             controlador.setPrueba(this);
             primaryStage.show();
-            
 
         } catch (IOException ex) {
             System.out.println("Error al cargar archivo externo");

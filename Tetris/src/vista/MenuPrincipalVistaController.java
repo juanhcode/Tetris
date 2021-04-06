@@ -34,7 +34,7 @@ public class MenuPrincipalVistaController implements Initializable {
     private Button play;
     @FXML
     private Button botonModoOscuro1;
-
+    
     Connection conn = null;
     ResultSet rs = null;
     PreparedStatement pst = null;
@@ -43,6 +43,8 @@ public class MenuPrincipalVistaController implements Initializable {
     @FXML
     private TextField campoUsuario;
     private Administrador MenuPrincipal;
+    private Nivel nivel;
+    public static String usuario;
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -64,7 +66,7 @@ public class MenuPrincipalVistaController implements Initializable {
     private void jugar() {
         Connection conn = Conexion.connectDb();
         int resultado = 0;
-        String usuario = campoUsuario.getText();
+        usuario = campoUsuario.getText();
         String contrasenia = campoContrasenia.getText();
         try {
             PreparedStatement ps = conn.prepareStatement("SELECT * FROM USUARIO WHERE nombre='" + usuario + "' and  password='" + contrasenia + "' ");
@@ -87,11 +89,8 @@ public class MenuPrincipalVistaController implements Initializable {
     }
 
     @FXML
-    private void empezarJuego() {
-        MenuPrincipal.llamarJuegoTetris();
-        //Tetris game = new Tetris();
-        //game.setLocationRelativeTo(null);
-        //game.setVisible(true);
+    private void empezarJuego() throws InterruptedException {
+        MenuPrincipal.llamarNivel();
     }
 
     public void setProgramaPrincipal(Administrador ProgramaPrincipal) {

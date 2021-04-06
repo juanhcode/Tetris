@@ -142,6 +142,25 @@ public class Administrador extends Application {
             System.out.println("Error al cargar archivo externo");
         }
     }
+    
+    public void llamarNivel(){
+        try {
+            //Para cargar el archivo fxml
+            FXMLLoader loader = new FXMLLoader();
+            loader.setLocation(Administrador.class.getResource("/vista/NivelVista.fxml"));
+            rootLaoyut = (BorderPane) loader.load();
+            //Crear la escena
+            Scene scene = new Scene(rootLaoyut);
+            primaryStage.setScene(scene);
+            primaryStage.setResizable(false);
+            NivelVistaController controlador = loader.getController();
+            controlador.setAdmin(this);
+            primaryStage.show();
+
+        } catch (IOException ex) {
+            System.out.println("Error al cargar archivo externo");
+        }
+    }
 
     public Scene getSceneT() {
         return sceneT;
