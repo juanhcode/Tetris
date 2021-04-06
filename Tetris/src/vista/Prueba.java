@@ -47,7 +47,7 @@ public class Prueba extends Application {
             //creamos el controlador de la ventana
             //enviamos el administrador Principal a la ventana abierta
             NivelVistaController controlador = loader.getController();
-            controlador.setPrueba(this);
+            //controlador.setPrueba(this);
             primaryStage.show();
 
         } catch (IOException ex) {

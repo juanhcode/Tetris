@@ -6,9 +6,17 @@
 package vista;
 
 import java.net.URL;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.util.ResourceBundle;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
+import javafx.scene.control.cell.PropertyValueFactory;
+import modelo.Conexion;
+import modelo.Usuario;
 
 /**
  * FXML Controller class
@@ -22,9 +30,27 @@ public class GameOverVistaController implements Initializable {
      */
     
     private Administrador admin;
+    @FXML
+    private TableView<Usuario> columnaTabla;
+    @FXML
+    private TableColumn<Usuario, String> columnaNombre;
+    @FXML
+    private TableColumn<Usuario, Integer> columnaPuntaje;
+    
+    ObservableList<Usuario> lista;
+
+    Connection conn = null;
+    
+    PreparedStatement pst = null;
+    
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // TODO
+        columnaNombre.setCellValueFactory(new PropertyValueFactory<Usuario, String>("nombre"));
+        columnaPuntaje.setCellValueFactory(new PropertyValueFactory<Usuario, Integer>("puntaje"));
+        
+
+        lista = Conexion.getDatausers();
+        columnaTabla.setItems(lista);
     }    
 
     @FXML

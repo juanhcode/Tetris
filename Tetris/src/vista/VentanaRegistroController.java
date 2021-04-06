@@ -77,11 +77,12 @@ public class VentanaRegistroController implements Initializable {
             JOptionPane.showMessageDialog(null, "Ingresar datos validos");
         } else if (contrasenia.equals(segundaContrasenia)) {
             conn = Conexion.connectDb();
-            String sql = "insert into usuario (nombre,password)values(?,?)";
+            String sql = "insert into usuario (nombre,password,puntaje)values(?,?,?)";
             try {
                 pst = conn.prepareStatement(sql);
                 pst.setString(1, campoUsuario.getText());
                 pst.setString(2, campoContraseña.getText());
+                pst.setInt(3, 0);
                 pst.execute();
                 JOptionPane.showMessageDialog(null, "Usuario añadido");
                 campoUsuario.setText("");
