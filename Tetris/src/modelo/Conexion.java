@@ -14,7 +14,7 @@ public class Conexion {
     public static Connection connectDb() {
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
-            Connection conn = (Connection) DriverManager.getConnection("jdbc:mysql://localhost/tetris", "root", "");
+            Connection conn = (Connection) DriverManager.getConnection("jdbc:mysql://localhost/tetris", "root", "juan12345");
             return conn;
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, e);

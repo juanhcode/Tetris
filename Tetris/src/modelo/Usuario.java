@@ -102,5 +102,5 @@ public class Usuario implements Serializable {
     public String toString() {
         return "modelo.Usuario[ nombre=" + nombre + " ]";
     }
-    
+
 }

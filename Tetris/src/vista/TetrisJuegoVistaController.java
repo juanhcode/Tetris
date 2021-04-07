@@ -43,7 +43,6 @@ public class TetrisJuegoVistaController implements Initializable {
     private static boolean juego = true;
     private static Forma siguienteObj = Controlador.Creacion();
     private static int noLineas = 0;
-    private Prueba prueba;
     private Administrador admin;
 
     @FXML
@@ -70,6 +69,7 @@ public class TetrisJuegoVistaController implements Initializable {
     @FXML
     private Label tiempo;
     private long inicio = 0;
+    private long minutos = 0;
     private boolean estado = false;
     private int nivelActual;
     Connection conn = null;
@@ -81,6 +81,7 @@ public class TetrisJuegoVistaController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+        nivel.setText(NivelVistaController.valor + "");
     }
 
     @FXML
@@ -115,11 +116,16 @@ public class TetrisJuegoVistaController implements Initializable {
                             if (aux1 >= 60) {
                                 aux1 -= 60;
                             }
-                            if (inicio / 60 >= 10) {
-                                tiempo.setText(aux + ":0" + aux1);
+                            if (minutos == 0) {
+                                minutos = aux;
+                            } else {
+                                minutos++;
+                            }
+                            if (minutos >= 10) {
+                                tiempo.setText(minutos + ":0" + aux1);
                                 inicio = aux1;
                             } else {
-                                tiempo.setText(tiempo.getText().substring(0, 1) + aux + ":0" + aux1);
+                                tiempo.setText(tiempo.getText().substring(0, 1) + minutos + ":0" + aux1);
                                 inicio = aux1;
                             }
                         }
@@ -128,7 +134,6 @@ public class TetrisJuegoVistaController implements Initializable {
                         } else {
                             tiempo.setText(tiempo.getText().substring(0, 4) + inicio);
                         }
-
                         if (objeto.a.getY() == 0 || objeto.b.getY() == 0 || objeto.c.getY() == 0 || objeto.d.getY() == 0) {
                             arriba++;
 
@@ -139,6 +144,7 @@ public class TetrisJuegoVistaController implements Initializable {
                         if (arriba == 2) {
                             int vidas = Integer.parseInt(vida.getText());
                             vidas--;
+                            
                             if (vidas == 2) {
                                 corazon3.setVisible(false);
                                 vida.setText(vidas + "");
@@ -153,9 +159,10 @@ public class TetrisJuegoVistaController implements Initializable {
                                 corazon1.setVisible(false);
                                 paneles.getChildren().clear(); //limpia tablero e inicia
                                 juego = false;
+                                
                                 //MANDAR PUNTAJE A LA BASE DE DATOS
                                 conn = Conexion.connectDb();
-                                String sql = "update usuario set puntaje= '" + puntaje  + "' where nombre='" + MenuPrincipalVistaController.usuario + "' ";
+                                String sql = "update usuario set puntaje= '" + puntaje + "' where nombre='" + MenuPrincipalVistaController.usuario + "' ";
                                 try {
                                     pst = conn.prepareStatement(sql);
                                     pst.execute();
@@ -176,23 +183,12 @@ public class TetrisJuegoVistaController implements Initializable {
                 );
             }
 
-        };
-        nivelActual = Integer.parseInt(nivel.getText());
-        System.out.println("NivelActual" + nivelActual);
-        int lineasActuales = Integer.parseInt(lineas.getText());
-        System.out.println("Lineas Actuales" + lineasActuales);
+        };       
         if (NivelVistaController.valor == 1) {
             caida.schedule(task, 0, 700);
         } else if (NivelVistaController.valor == 5) {
             caida.schedule(task, 0, 1000);
-            nivel.setText(NivelVistaController.valor + "");
-            System.out.println(lineas.getText());
-            if (lineasActuales >= 1) {
-                nivel.setText(nivelActual++ + "");
-                caida.schedule(task, 0, 100);
-            }
         } else if (NivelVistaController.valor == 10) {
-            nivel.setText(NivelVistaController.valor + "");
             caida.schedule(task, 0, 100);
         }
     }
@@ -673,10 +669,6 @@ public class TetrisJuegoVistaController implements Initializable {
     private void pausar() {
         admin.abrirVentanaPausa();
 
-    }
-
-    public void setPrueba(Prueba prueba) {
-        this.prueba = prueba;
     }
 
     public void setAdmin(Administrador admin) {

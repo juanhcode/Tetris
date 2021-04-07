@@ -20,7 +20,6 @@ public class NivelVistaController implements Initializable {
     /**
      * Initializes the controller class.
      */
-    private Prueba prueba;
     private Administrador admin;
     private Nivel nivel = new Nivel();
     public static int valor;

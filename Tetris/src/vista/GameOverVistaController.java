@@ -28,7 +28,6 @@ public class GameOverVistaController implements Initializable {
     /**
      * Initializes the controller class.
      */
-    
     private Administrador admin;
     @FXML
     private TableView<Usuario> columnaTabla;
@@ -36,22 +35,21 @@ public class GameOverVistaController implements Initializable {
     private TableColumn<Usuario, String> columnaNombre;
     @FXML
     private TableColumn<Usuario, Integer> columnaPuntaje;
-    
+
     ObservableList<Usuario> lista;
 
     Connection conn = null;
-    
+
     PreparedStatement pst = null;
-    
+
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         columnaNombre.setCellValueFactory(new PropertyValueFactory<Usuario, String>("nombre"));
         columnaPuntaje.setCellValueFactory(new PropertyValueFactory<Usuario, Integer>("puntaje"));
-        
 
         lista = Conexion.getDatausers();
         columnaTabla.setItems(lista);
-    }    
+    }
 
     @FXML
     private void home() {
@@ -60,7 +58,7 @@ public class GameOverVistaController implements Initializable {
 
     @FXML
     private void cargarDeNuevo() {
-        admin.llamarJuegoTetris();
+        admin.llamarNivel();
     }
 
     public Administrador getAdmin() {
@@ -70,8 +68,5 @@ public class GameOverVistaController implements Initializable {
     public void setAdmin(Administrador admin) {
         this.admin = admin;
     }
-    
-    
-    
-    
+
 }

@@ -21,7 +21,6 @@ public class PausaVistaController implements Initializable {
 
     @FXML
     private Button reanudar;
-    private Prueba prueba;
     private Administrador admin;
 
     /**
@@ -30,7 +29,7 @@ public class PausaVistaController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
-    }    
+    }
 
     @FXML
     private void reanudar() {
@@ -46,14 +45,8 @@ public class PausaVistaController implements Initializable {
 
     @FXML
     private void quitar() throws IOException {
-        //prueba.getPrimaryStage().close();
         admin.getPrimaryStagePausa().close();
         admin.initRootLayout();
-        
-    }
-
-    public void setPrueba(Prueba prueba) {
-        this.prueba = prueba;
     }
 
     public void setReanudar(Button reanudar) {
@@ -63,5 +56,5 @@ public class PausaVistaController implements Initializable {
     public void setAdmin(Administrador admin) {
         this.admin = admin;
     }
-    
+
 }

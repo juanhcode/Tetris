@@ -13,14 +13,14 @@ public class Administrador extends Application {
     private Stage primaryStage;
     private Stage primaryStagePausa;
     public static Scene scenePausa;
-    private BorderPane rootLaoyut; //Es el borderPane
+    private BorderPane rootLaoyut; // Es el borderPane
     public static Scene sceneT;
 
     @Override
     public void start(Stage stage) throws Exception {
         primaryStage = stage;
         primaryStagePausa = new Stage();
-        primaryStage.setTitle("Tetris"); //Titulo
+        primaryStage.setTitle("Tetris"); // Titulo
         initRootLayout();
     }
 
@@ -28,18 +28,18 @@ public class Administrador extends Application {
 
         try {
 
-            //Para cargar el archivo fxml
+            // Para cargar el archivo fxml
             FXMLLoader loader = new FXMLLoader();
             loader.setLocation(Administrador.class.getResource("/vista/MenuPrincipalVista.fxml"));
             rootLaoyut = (BorderPane) loader.load();
 
-            //Crear la escena
+            // Crear la escena
             Scene scene = new Scene(rootLaoyut);
             primaryStage.setScene(scene);
             primaryStage.setResizable(false);
 
-            //creamos el controlador de la ventana
-            //enviamos el administrador Principal a la ventana abierta
+            // creamos el controlador de la ventana
+            // enviamos el administrador Principal a la ventana abierta
             MenuPrincipalVistaController ventanaAbierta = loader.getController();
             ventanaAbierta.setProgramaPrincipal(this);
             primaryStage.show();
@@ -54,17 +54,17 @@ public class Administrador extends Application {
 
         try {
 
-            //Para cargar el archivo fxml
+            // Para cargar el archivo fxml
             FXMLLoader loader = new FXMLLoader();
             loader.setLocation(Administrador.class.getResource("/vista/VentanaRegistro.fxml"));
             rootLaoyut = (BorderPane) loader.load();
 
-            //Crear la escena
+            // Crear la escena
             Scene scene = new Scene(rootLaoyut);
             primaryStage.setScene(scene);
             primaryStage.setResizable(false);
 
-            //creamos el controlador de la ventana
+            // creamos el controlador de la ventana
             VentanaRegistroController ventanaAbierta = loader.getController();
             ventanaAbierta.setProgramaRegistro(this);
 
@@ -79,19 +79,19 @@ public class Administrador extends Application {
 
         try {
 
-            //Para cargar el archivo fxml
+            // Para cargar el archivo fxml
             FXMLLoader loader = new FXMLLoader();
             loader.setLocation(Administrador.class.getResource("/vista/TetrisJuegoVista.fxml"));
             rootLaoyut = (BorderPane) loader.load();
 
-            //Crear la escena
+            // Crear la escena
             sceneT = new Scene(rootLaoyut);
             primaryStage.setScene(sceneT);
             primaryStage.setResizable(false);
 
-            //creamos el controlador de la ventana
-            //Tetris ventanaAbierta = loader.getController();
-            //ventanaAbierta.setProgramaTetris(this);
+            // creamos el controlador de la ventana
+            // Tetris ventanaAbierta = loader.getController();
+            // ventanaAbierta.setProgramaTetris(this);
             TetrisJuegoVistaController controlador = loader.getController();
             controlador.setAdmin(this);
             primaryStage.show();
@@ -105,12 +105,12 @@ public class Administrador extends Application {
 
         try {
 
-            //Para cargar el archivo fxml
+            // Para cargar el archivo fxml
             FXMLLoader loader = new FXMLLoader();
             loader.setLocation(Administrador.class.getResource("/vista/PausaVista.fxml"));
             rootLaoyut = (BorderPane) loader.load();
 
-            //Crear la escena
+            // Crear la escena
             scenePausa = new Scene(rootLaoyut);
             primaryStagePausa.setScene(scenePausa);
             primaryStagePausa.setResizable(false);
@@ -126,11 +126,11 @@ public class Administrador extends Application {
 
     public void abrirVentanaGameOver() {
         try {
-            //Para cargar el archivo fxml
+            // Para cargar el archivo fxml
             FXMLLoader loader = new FXMLLoader();
             loader.setLocation(Administrador.class.getResource("/vista/GameOverVista.fxml"));
             rootLaoyut = (BorderPane) loader.load();
-            //Crear la escena
+            // Crear la escena
             Scene scene = new Scene(rootLaoyut);
             primaryStage.setScene(scene);
             primaryStage.setResizable(false);
@@ -142,14 +142,14 @@ public class Administrador extends Application {
             System.out.println("Error al cargar archivo externo");
         }
     }
-    
-    public void llamarNivel(){
+
+    public void llamarNivel() {
         try {
-            //Para cargar el archivo fxml
+            // Para cargar el archivo fxml
             FXMLLoader loader = new FXMLLoader();
             loader.setLocation(Administrador.class.getResource("/vista/NivelVista.fxml"));
             rootLaoyut = (BorderPane) loader.load();
-            //Crear la escena
+            // Crear la escena
             Scene scene = new Scene(rootLaoyut);
             primaryStage.setScene(scene);
             primaryStage.setResizable(false);
