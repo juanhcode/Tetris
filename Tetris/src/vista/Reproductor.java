@@ -5,6 +5,8 @@
  */
 package vista;
 
+import java.io.File;
+
 /**
  *
  * @author Juan Manuel

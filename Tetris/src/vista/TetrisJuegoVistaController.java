@@ -16,6 +16,7 @@ import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyEvent;
@@ -44,6 +45,8 @@ public class TetrisJuegoVistaController implements Initializable {
     private static Forma siguienteObj = Controlador.Creacion();
     private static int noLineas = 0;
     private Administrador admin;
+    
+    
 
     @FXML
     private Text nivel;
@@ -75,6 +78,8 @@ public class TetrisJuegoVistaController implements Initializable {
     Connection conn = null;
     ResultSet rs = null;
     PreparedStatement pst = null;
+    @FXML
+    private Button btintrucciones;
 
     /**
      * Initializes the controller class.
@@ -674,4 +679,11 @@ public class TetrisJuegoVistaController implements Initializable {
         this.admin = admin;
     }
 
+    private void intrucciones2(){
+        admin.abririntrucciones();
+        
+
+    }
+    
+    
 }

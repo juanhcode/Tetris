@@ -33,7 +33,7 @@ public class Galeria_imagenesController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         for (int i = 0; i < 3; i++) {
-            imagenes[i] = new Image("/imagenes/a" + i + ".jpg");
+            imagenes[i] = new Image("/recursos/a" + i + ".jpg");
         }
         campoImagen.setImage(imagenes[0]);
         //   campoLabel.setText("a" + 0 + ".jpg");
