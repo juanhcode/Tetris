@@ -11,6 +11,8 @@ import java.util.Arrays;
 import java.util.ResourceBundle;
 import java.util.Timer;
 import java.util.TimerTask;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javafx.application.Platform;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
@@ -45,8 +47,6 @@ public class TetrisJuegoVistaController implements Initializable {
     private static Forma siguienteObj = Controlador.Creacion();
     private static int noLineas = 0;
     private Administrador admin;
-    
-    
 
     @FXML
     private Text nivel;
@@ -80,6 +80,7 @@ public class TetrisJuegoVistaController implements Initializable {
     PreparedStatement pst = null;
     @FXML
     private Button btintrucciones;
+    public static Reproductor repro = new Reproductor();
 
     /**
      * Initializes the controller class.
@@ -91,6 +92,13 @@ public class TetrisJuegoVistaController implements Initializable {
 
     @FXML
     public void iniciar() {
+        try {
+            repro.AbrirFichero("C:/Users/Juan Manuel/OneDrive - correounivalle.edu.co/Escritorio/Juan/Personal/UNIVERSIDAD/UNIVALLE/SEMESTRE 4/Programacion Interactiva/ProyectoTetris/Tetris/Tetris/src/recursos/SmoothCriminal.mp3");
+            repro.Play();
+        } catch (Exception ex) {
+            Logger.getLogger(TetrisJuegoVistaController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
         for (int[] a : TABLERO) {
             Arrays.fill(a, 0);
         }
@@ -163,6 +171,11 @@ public class TetrisJuegoVistaController implements Initializable {
                             } else if (vidas == 0) {
                                 corazon1.setVisible(false);
                                 paneles.getChildren().clear(); //limpia tablero e inicia
+                                try {
+                                    repro.Stop();
+                                } catch (Exception ex) {
+                                    Logger.getLogger(TetrisJuegoVistaController.class.getName()).log(Level.SEVERE, null, ex);
+                                }
                                 //juego = false;
                                 //MANDAR PUNTAJE A LA BASE DE DATOS
                                 conn = Conexion.connectDb();
@@ -200,13 +213,12 @@ public class TetrisJuegoVistaController implements Initializable {
     public void funcion(Timer time, TimerTask task) {
         time.schedule(task, 0, 600);
     }
-    
-    public void instrucciones (){
+
+    public void instrucciones() {
         admin.abririntrucciones();
     }
 
     private void moveOnKeyPress(Forma forma) {
-        //Prueba.scene.setOnKeyPressed(new EventHandler<KeyEvent>() {
         Administrador.sceneT.setOnKeyPressed(new EventHandler<KeyEvent>() {
             @Override
             public void handle(KeyEvent event) {
@@ -669,25 +681,23 @@ public class TetrisJuegoVistaController implements Initializable {
                     }
                 }
                 rectas.clear();
+                //repro.AbrirFichero(ruta); coloca musica
+                //repro.play
             } while (lineas.size() > 0);
         }
     }
 
     @FXML
     private void pausar() {
+        try {
+            repro.Pausa();
+        } catch (Exception ex) {
+            Logger.getLogger(TetrisJuegoVistaController.class.getName()).log(Level.SEVERE, null, ex);
+        }
         admin.abrirVentanaPausa();
-
     }
 
     public void setAdmin(Administrador admin) {
         this.admin = admin;
     }
-
-    private void intrucciones2(){
-        admin.abririntrucciones();
-        
-
-    }
-    
-    
 }

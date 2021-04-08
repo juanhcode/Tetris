@@ -32,7 +32,10 @@ public class PausaVistaController implements Initializable {
     }
 
     @FXML
-    private void reanudar() {
+    private void reanudar() throws Exception {
+        admin.getPrimaryStagePausa().close();
+        TetrisJuegoVistaController.repro.Continuar();
+        //FALTA LA DE EMANUEL 
     }
 
     @FXML

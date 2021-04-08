@@ -1,21 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.image.*?>
-<?import javafx.scene.layout.*?>
-<?import javafx.scene.text.*?>
 <?import javafx.scene.control.Button?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.control.Menu?>
-<?import javafx.scene.control.MenuBar?>
-<?import javafx.scene.control.MenuItem?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
-<?import javafx.scene.text.Font?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="583.0" prefWidth="682.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="vista.Galeria_imagenesController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="583.0" prefWidth="682.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="vista.Galeria_imagenesController">
    <center>
       <AnchorPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
          <children>
@@ -24,6 +14,7 @@
             <Button fx:id="botonSiguiente" layoutX="502.0" layoutY="541.0" mnemonicParsing="false" onAction="#siguiente" prefHeight="25.0" prefWidth="68.0" text="&gt;" />
             <Button fx:id="botonVolverPrimera" layoutX="344.0" layoutY="541.0" mnemonicParsing="false" onAction="#volverPrimeraImagen" prefHeight="25.0" prefWidth="67.0" text="&lt;&lt;" />
             <Button fx:id="botonUltimaImagen" layoutX="579.0" layoutY="541.0" mnemonicParsing="false" onAction="#irUltimaImagen" prefHeight="25.0" prefWidth="67.0" text="&gt;&gt;" />
+            <Button layoutX="34.0" layoutY="541.0" mnemonicParsing="false" onAction="#salir" prefHeight="29.0" prefWidth="96.0" styleClass="tablero" stylesheets="@../css/menuprincipalvista.css" text="Salir" />
          </children>
       </AnchorPane>
    </center>

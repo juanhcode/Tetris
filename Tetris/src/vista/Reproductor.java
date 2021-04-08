@@ -6,6 +6,7 @@
 package vista;
 
 import java.io.File;
+import javazoom.jlgui.basicplayer.BasicPlayer;
 
 /**
  *
@@ -17,10 +18,6 @@ public class Reproductor {
 
     public Reproductor() {
         player = new BasicPlayer();
-    }
-
-    public void coge(String y) {
-
     }
 
     public void Play() throws Exception {
@@ -43,19 +40,9 @@ public class Reproductor {
         player.stop();
     }
 
-    public void reproducemp3() throws Exception {
-        try {
-            Reproductor mi_reproductor = new Reproductor();
-            mi_reproductor.AbrirFichero("C:/Users/Public/Music/Sample Music/Kalimba.mp3");
-            mi_reproductor.Play();
-        } catch (Exception ex) {
-            System.out.println("Error: " + ex.getMessage());
-        }
-    }
-
     public static void main(String args[]) throws Exception {
         Reproductor y = new Reproductor();
-        y.AbrirFichero("C:/Users/Public/Music/Sample Music/Kalimba.mp3");
+        y.AbrirFichero("C:/Users/Juan Manuel/OneDrive - correounivalle.edu.co/Escritorio/Juan/Personal/UNIVERSIDAD/UNIVALLE/SEMESTRE 4/Programacion Interactiva/ProyectoTetris/Tetris/Tetris/src/recursos/SmoothCriminal.mp3");
         y.Play();
     }
 }
