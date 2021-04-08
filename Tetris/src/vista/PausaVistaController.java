@@ -41,7 +41,7 @@ public class PausaVistaController implements Initializable {
 
     @FXML
     private void comoJugar() {
-        admin.llamarComoQuitar();
+        admin.abririntrucciones();
     }
 
     @FXML

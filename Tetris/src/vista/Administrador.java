@@ -211,7 +211,7 @@ public class Administrador extends Application {
             Scene scene = new Scene(rootLaoyut);
             primaryStage.setScene(scene);
             primaryStage.setResizable(false);
-            GameOverVistaController controlador = loader.getController();
+            Galeria_imagenesController controlador = loader.getController();
             controlador.setAdmin(this);
             primaryStage.show();
 

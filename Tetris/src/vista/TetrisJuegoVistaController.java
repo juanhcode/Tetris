@@ -200,6 +200,10 @@ public class TetrisJuegoVistaController implements Initializable {
     public void funcion(Timer time, TimerTask task) {
         time.schedule(task, 0, 600);
     }
+    
+    public void instrucciones (){
+        admin.abririntrucciones();
+    }
 
     private void moveOnKeyPress(Forma forma) {
         //Prueba.scene.setOnKeyPressed(new EventHandler<KeyEvent>() {

@@ -28,6 +28,7 @@ public class Galeria_imagenesController implements Initializable {
     private Button botonVolverPrimera;
     @FXML
     private Button botonUltimaImagen;
+    
     private Administrador admin;
 
     @Override
