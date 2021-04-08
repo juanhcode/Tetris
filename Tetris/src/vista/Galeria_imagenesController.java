@@ -86,11 +86,6 @@ public class Galeria_imagenesController implements Initializable {
         //  campoLabel.setText("a" + ultimaImagen + ".jpg");
     }
 
-    @FXML
-    private void salir() {
-        System.exit(0);
-
-    }
 
     public Administrador getAdmin() {
         return admin;

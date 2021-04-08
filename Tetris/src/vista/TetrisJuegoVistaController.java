@@ -78,8 +78,6 @@ public class TetrisJuegoVistaController implements Initializable {
     Connection conn = null;
     ResultSet rs = null;
     PreparedStatement pst = null;
-    @FXML
-    private Button btintrucciones;
     public static Reproductor repro = new Reproductor();
 
     /**
@@ -102,7 +100,7 @@ public class TetrisJuegoVistaController implements Initializable {
         for (int[] a : TABLERO) {
             Arrays.fill(a, 0);
         }
-
+        
         Forma a = siguienteObj;
         paneles.getChildren().addAll(a.a, a.b, a.c, a.d);
         moveOnKeyPress(a);
@@ -154,21 +152,21 @@ public class TetrisJuegoVistaController implements Initializable {
 
                         if (noLineas == 2) {
                             nivel.setText(nivelDeAvance + "");
-                        } else if (noLineas == 3) {
+                        } else if (noLineas == 4) {
                             nivel.setText(tercerNivel + "");
-                        } else if (noLineas == 2) {
+                        } else if (noLineas == 6) {
                             nivel.setText(cuartoNivel + "");
-                        } else if (noLineas == 3) {
+                        } else if (noLineas == 8) {
                             nivel.setText(quintoNivel + "");
-                        } else if (noLineas == 3) {
+                        } else if (noLineas == 10) {
                             nivel.setText(sextoNivel + "");
-                        } else if (noLineas == 2) {
+                        } else if (noLineas == 12) {
                             nivel.setText(septimoNivel + "");
-                        } else if (noLineas == 3) {
+                        } else if (noLineas == 14) {
                             nivel.setText(octavoNivel + "");
-                        } else if (noLineas == 2) {
+                        } else if (noLineas == 16) {
                             nivel.setText(novenoNivel + "");
-                        } else if (noLineas == 3) {
+                        } else if (noLineas == 18) {
                             nivel.setText(decimoNivel + "");
                         }
 

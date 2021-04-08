@@ -14,7 +14,6 @@
             <Button fx:id="botonSiguiente" layoutX="502.0" layoutY="541.0" mnemonicParsing="false" onAction="#siguiente" prefHeight="25.0" prefWidth="68.0" text="&gt;" />
             <Button fx:id="botonVolverPrimera" layoutX="344.0" layoutY="541.0" mnemonicParsing="false" onAction="#volverPrimeraImagen" prefHeight="25.0" prefWidth="67.0" text="&lt;&lt;" />
             <Button fx:id="botonUltimaImagen" layoutX="579.0" layoutY="541.0" mnemonicParsing="false" onAction="#irUltimaImagen" prefHeight="25.0" prefWidth="67.0" text="&gt;&gt;" />
-            <Button layoutX="34.0" layoutY="541.0" mnemonicParsing="false" onAction="#salir" prefHeight="29.0" prefWidth="96.0" styleClass="tablero" stylesheets="@../css/menuprincipalvista.css" text="Salir" />
          </children>
       </AnchorPane>
    </center>

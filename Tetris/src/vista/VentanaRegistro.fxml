@@ -9,12 +9,12 @@
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="518.0" prefWidth="995.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="vista.VentanaRegistroController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="518.0" prefWidth="995.0" style="-fx-background-color: #96aab7;" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="vista.VentanaRegistroController">
    <center>
       <AnchorPane prefHeight="400.0" prefWidth="280.0" BorderPane.alignment="CENTER">
          <children>
-            <Button fx:id="botonAtras" layoutX="14.0" layoutY="476.0" mnemonicParsing="false" onAction="#btatras" prefHeight="28.0" prefWidth="95.0" text="ATRAS" />
-            <Button fx:id="botonRegistrar" layoutX="135.0" layoutY="391.0" mnemonicParsing="false" onAction="#registrar" prefHeight="28.0" prefWidth="95.0" text="Registrar" />
+            <Button fx:id="botonAtras" layoutX="14.0" layoutY="476.0" mnemonicParsing="false" onAction="#btatras" prefHeight="28.0" prefWidth="95.0" style="-fx-background-color: #464e5d;" styleClass="hold" stylesheets="@../css/menuprincipalvista.css" text="ATRAS" textFill="WHITE" />
+            <Button fx:id="botonRegistrar" layoutX="135.0" layoutY="391.0" mnemonicParsing="false" onAction="#registrar" prefHeight="28.0" prefWidth="95.0" style="-fx-background-color: #464e5d;" styleClass="hold" stylesheets="@../css/menuprincipalvista.css" text="Registrar" textFill="WHITE" />
             <TextField fx:id="campoUsuario" layoutX="87.0" layoutY="178.0" prefHeight="25.0" prefWidth="210.0" />
             <Label layoutX="87.0" layoutY="149.0" prefHeight="29.0" prefWidth="120.0" text="Usuario">
                <font>
