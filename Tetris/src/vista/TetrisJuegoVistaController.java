@@ -93,7 +93,7 @@ public class TetrisJuegoVistaController implements Initializable {
     @FXML
     public void iniciar() {
         try {
-            repro.AbrirFichero("C:/Users/Juan Manuel/OneDrive - correounivalle.edu.co/Escritorio/Juan/Personal/UNIVERSIDAD/UNIVALLE/SEMESTRE 4/Programacion Interactiva/ProyectoTetris/Tetris/Tetris/src/recursos/SmoothCriminal.mp3");
+            //repro.AbrirFichero("C:/Users/Juan Manuel/OneDrive - correounivalle.edu.co/Escritorio/Juan/Personal/UNIVERSIDAD/UNIVALLE/SEMESTRE 4/Programacion Interactiva/ProyectoTetris/Tetris/Tetris/src/recursos/SmoothCriminal.mp3");
             repro.Play();
         } catch (Exception ex) {
             Logger.getLogger(TetrisJuegoVistaController.class.getName()).log(Level.SEVERE, null, ex);
@@ -142,6 +142,36 @@ public class TetrisJuegoVistaController implements Initializable {
                                 inicio = aux1;
                             }
                         }
+                        int nivelDeAvance = NivelVistaController.valor + 1; // nivel 2
+                        int tercerNivel = nivelDeAvance + 1; // nivel 3
+                        int cuartoNivel = tercerNivel + 1; // nivel 4
+                        int quintoNivel = cuartoNivel + 1;
+                        int sextoNivel = quintoNivel + 1;
+                        int septimoNivel = sextoNivel + 1;
+                        int octavoNivel = septimoNivel + 1;
+                        int novenoNivel = octavoNivel + 1;
+                        int decimoNivel = novenoNivel + 1;
+
+                        if (noLineas == 2) {
+                            nivel.setText(nivelDeAvance + "");
+                        } else if (noLineas == 3) {
+                            nivel.setText(tercerNivel + "");
+                        } else if (noLineas == 2) {
+                            nivel.setText(cuartoNivel + "");
+                        } else if (noLineas == 3) {
+                            nivel.setText(quintoNivel + "");
+                        } else if (noLineas == 3) {
+                            nivel.setText(sextoNivel + "");
+                        } else if (noLineas == 2) {
+                            nivel.setText(septimoNivel + "");
+                        } else if (noLineas == 3) {
+                            nivel.setText(octavoNivel + "");
+                        } else if (noLineas == 2) {
+                            nivel.setText(novenoNivel + "");
+                        } else if (noLineas == 3) {
+                            nivel.setText(decimoNivel + "");
+                        }
+
                         if (inicio >= 10) {
                             tiempo.setText(tiempo.getText().substring(0, 3) + inicio);
                         } else {
@@ -202,9 +232,9 @@ public class TetrisJuegoVistaController implements Initializable {
 
         };
         if (NivelVistaController.valor == 1) {
-            caida.schedule(task, 0, 700);
+            caida.schedule(task, 0, 1000);
         } else if (NivelVistaController.valor == 5) {
-            caida.schedule(task, 0, 1000); //CAMBIAR PARA NO HACER EL RIDICULO COMO CIFUENTES
+            caida.schedule(task, 0, 500); //CAMBIAR PARA NO HACER EL RIDICULO COMO CIFUENTES
         } else if (NivelVistaController.valor == 10) {
             caida.schedule(task, 0, 100);
         }

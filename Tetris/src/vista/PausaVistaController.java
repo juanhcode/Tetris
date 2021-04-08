@@ -38,9 +38,6 @@ public class PausaVistaController implements Initializable {
         //FALTA LA DE EMANUEL 
     }
 
-    @FXML
-    private void opciones() {
-    }
 
     @FXML
     private void comoJugar() {
