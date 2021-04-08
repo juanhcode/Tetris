@@ -1,4 +1,5 @@
 package modelo;
+
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -21,22 +22,20 @@ public class Conexion {
             return null;
         }
     }
-    
-    public static ObservableList<Usuario> getDatausers(){
+
+    public static ObservableList<Usuario> getDatausers() {
         Connection conn = connectDb();
         ObservableList<Usuario> list = FXCollections.observableArrayList();
         try {
-            PreparedStatement ps = conn.prepareStatement("select * from usuario ORDER BY `puntaje` DESC");
+            PreparedStatement ps = conn.prepareStatement("select * from usuario ORDER BY `puntaje` DESC LIMIT 3");
             ResultSet rs = ps.executeQuery();
-            
-            while (rs.next()){   
-                list.add(new Usuario(rs.getString("nombre"),rs.getString("password"),(Integer.parseInt(rs.getString("puntaje")))));    
+            while (rs.next()) {
+                list.add(new Usuario(rs.getString("nombre"), rs.getString("password"), (Integer.parseInt(rs.getString("puntaje")))));
             }
         } catch (Exception e) {
             System.out.println("error " + e);
         }
         return list;
-        
-        
+
     }
 }

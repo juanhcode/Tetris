@@ -6,6 +6,7 @@ import java.net.URL;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.ResourceBundle;
@@ -79,6 +80,8 @@ public class TetrisJuegoVistaController implements Initializable {
     ResultSet rs = null;
     PreparedStatement pst = null;
     public static Reproductor repro = new Reproductor();
+    @FXML
+    private Label puntajeMaximo;
 
     /**
      * Initializes the controller class.
@@ -90,6 +93,20 @@ public class TetrisJuegoVistaController implements Initializable {
 
     @FXML
     public void iniciar() {
+        Connection conn = Conexion.connectDb();
+        PreparedStatement ps;
+        try {
+            ps = conn.prepareStatement("select * from usuario ORDER BY `puntaje` DESC LIMIT 1");
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()){   
+                puntajeMaximo.setText(rs.getInt("puntaje")+"");
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(TetrisJuegoVistaController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+            
+        
+        
         try {
             //repro.AbrirFichero("C:/Users/Juan Manuel/OneDrive - correounivalle.edu.co/Escritorio/Juan/Personal/UNIVERSIDAD/UNIVALLE/SEMESTRE 4/Programacion Interactiva/ProyectoTetris/Tetris/Tetris/src/recursos/SmoothCriminal.mp3");
             repro.Play();
@@ -206,7 +223,7 @@ public class TetrisJuegoVistaController implements Initializable {
                                 }
                                 //juego = false;
                                 //MANDAR PUNTAJE A LA BASE DE DATOS
-                                conn = Conexion.connectDb();
+                                //conn = Conexion.connectDb();
                                 String sql = "update usuario set puntaje= '" + puntaje + "' where nombre='" + MenuPrincipalVistaController.usuario + "' ";
                                 try {
                                     pst = conn.prepareStatement(sql);
@@ -232,7 +249,7 @@ public class TetrisJuegoVistaController implements Initializable {
         if (NivelVistaController.valor == 1) {
             caida.schedule(task, 0, 1000);
         } else if (NivelVistaController.valor == 5) {
-            caida.schedule(task, 0, 500); //CAMBIAR PARA NO HACER EL RIDICULO COMO CIFUENTES
+            caida.schedule(task, 0, 500);
         } else if (NivelVistaController.valor == 10) {
             caida.schedule(task, 0, 100);
         }
