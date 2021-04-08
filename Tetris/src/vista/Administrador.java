@@ -162,6 +162,25 @@ public class Administrador extends Application {
         }
     }
 
+    public void llamarRanking() {
+        try {
+            // Para cargar el archivo fxml
+            FXMLLoader loader = new FXMLLoader();
+            loader.setLocation(Administrador.class.getResource("/vista/rankingVista.fxml"));
+            rootLaoyut = (BorderPane) loader.load();
+            // Crear la escena
+            Scene scene = new Scene(rootLaoyut);
+            primaryStage.setScene(scene);
+            primaryStage.setResizable(false);
+            RankingVistaController controlador = loader.getController();
+            controlador.setAdmin(this);
+            primaryStage.show();
+
+        } catch (IOException ex) {
+            System.out.println("Error al cargar archivo externo");
+        }
+    }
+
     public Scene getSceneT() {
         return sceneT;
     }

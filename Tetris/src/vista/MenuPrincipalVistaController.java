@@ -11,6 +11,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ResourceBundle;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
@@ -32,9 +33,7 @@ public class MenuPrincipalVistaController implements Initializable {
     private Button botonModoOscuro;
     @FXML
     private Button play;
-    @FXML
-    private Button botonModoOscuro1;
-    
+
     Connection conn = null;
     ResultSet rs = null;
     PreparedStatement pst = null;
@@ -51,10 +50,6 @@ public class MenuPrincipalVistaController implements Initializable {
         play.setDisable(true);
     }
 
-    @FXML
-    private void modoOscuro() {
-
-    }
 
     //esto abre la ventana regisrar
     @FXML
@@ -95,5 +90,15 @@ public class MenuPrincipalVistaController implements Initializable {
 
     public void setProgramaPrincipal(Administrador ProgramaPrincipal) {
         this.MenuPrincipal = ProgramaPrincipal;
+    }
+
+    @FXML
+    private void ranking() {
+        MenuPrincipal.llamarRanking();
+    }
+
+    @FXML
+    private void salir() {
+        System.exit(0);
     }
 }

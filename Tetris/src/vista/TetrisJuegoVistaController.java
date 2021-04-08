@@ -144,7 +144,7 @@ public class TetrisJuegoVistaController implements Initializable {
                         if (arriba == 2) {
                             int vidas = Integer.parseInt(vida.getText());
                             vidas--;
-                            
+
                             if (vidas == 2) {
                                 corazon3.setVisible(false);
                                 vida.setText(vidas + "");
@@ -158,8 +158,7 @@ public class TetrisJuegoVistaController implements Initializable {
                             } else if (vidas == 0) {
                                 corazon1.setVisible(false);
                                 paneles.getChildren().clear(); //limpia tablero e inicia
-                                juego = false;
-                                
+                                //juego = false;
                                 //MANDAR PUNTAJE A LA BASE DE DATOS
                                 conn = Conexion.connectDb();
                                 String sql = "update usuario set puntaje= '" + puntaje + "' where nombre='" + MenuPrincipalVistaController.usuario + "' ";
@@ -183,11 +182,11 @@ public class TetrisJuegoVistaController implements Initializable {
                 );
             }
 
-        };       
+        };
         if (NivelVistaController.valor == 1) {
             caida.schedule(task, 0, 700);
         } else if (NivelVistaController.valor == 5) {
-            caida.schedule(task, 0, 1000);
+            caida.schedule(task, 0, 1000); //CAMBIAR PARA NO HACER EL RIDICULO COMO CIFUENTES
         } else if (NivelVistaController.valor == 10) {
             caida.schedule(task, 0, 100);
         }
